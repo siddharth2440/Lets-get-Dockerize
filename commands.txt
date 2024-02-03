@@ -1,0 +1,55 @@
+docker -v   / / version of the Docker which is installed in our local
+
+docker run -it ubuntu      // isse ekk container bnn gaya aur Humm aagaye container ke andrr
+docker container ls        // list all the container
+docker container ls -a     // list all the container even it is Down
+docker start | containerName |   // start the container
+docker stop  | containerName |   // stop the container
+docker exec | containerName |  ls    //container ke andrr jo bhi hai woh sbb la dega and laane ke baad wapas se shutDown HoJaayegaa
+docker exec -it | containerName | bash  // isse hmm container ke bahar nhi aayenge i.e., container ke andrr hee rahenge 
+docker images      // isse hmm saree images dekh sakte hai  
+docker run -it node   // isse node ke image download ho gyi
+
+--------------------------- Docker container creation with UserDefinedName -----------------------
+docker run -it --name |nameOfTheContainer| imageName
+
+
+--------------------------- PORT Mapping  ------------------------------------------------
+
+docker run -it -p MachinePORT:ContainerPORt  imageName              // PORT hamari local machine me Expose aajaayegaa
+docker run -it -p MachinePORT:ContainerPort -p MachinePORT:ContainerPORt imageName   // Multiple PORT Mapping
+
+
+---------------------------- Environment Variables  ------------------------------------------
+docker run -it -p MachinePORT:ContainerPORt -e key=value -e key=value -e key=value imageName
+
+
+----------------------------- NodeJS App converting to an Image  -------------------------------
+docker build -t imageName(whatever u want) | Destination of THe Docker File |
+
+
+--------------------------- Docker login ----------------------------------------------------
+docker login
+
+----------------------------- Push the image to the Docker ---------------------------
+docker push imageName
+
+----------------------------- Docker compose ----------------------------------------
+docker compose up
+docker compose down
+docker compose ip -d         | background me run karega |
+
+
+----------------------------- Docker Networking --------------------------------------
+docker network inspect bridge     // me woh sare container dikhyegaa jo bridge network se connected hai
+docker network ls         // list of network dikhayegaa [bridge,host,none {By Default}]
+
+
+------------------------------- Our own custom network -----------------------------
+docker network create -d bridge |networkName|               // here we are created our own network  and also instead of Briddge , we can also take host,none,our own made network
+docker run -it  --network = |networkName| --name |containerName| ubuntu    //network ke andrr hmne ekk container banaya [containerName] se  and also I remind you that ubuntu is an image
+
+------------------------------- Volume Mapping -----------------------------
+docker run -it -v hostMachineKeFolderKaAddress:containerKeAndrrkafolderKaAddress
+
+
